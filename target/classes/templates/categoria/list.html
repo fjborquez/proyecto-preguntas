@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title th:text="${titulo}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	<a href="#" th:href="@{{agregarUri} (agregarUri=${agregarUri})}"> Agregar </a>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nombre</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${categorias.empty}">
+				<td colspan="4"><span th:text="${sinRegistro}"></span></td>
+			</tr>
+			<tr th:each="categoria : ${categorias}">
+				<td><span th:text="${categoria.id}"> ID </span></td>
+				<td><span th:text="${categoria.nombre}"> Nombre </span></td>
+				<td><a th:href="@{/admin/categoria/{id}/edit(id=${categoria.id})}"> Editar </a></td>
+				<td><a th:href="@{/admin/categoria/{id}/delete(id=${categoria.id})}"> Eliminar </a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

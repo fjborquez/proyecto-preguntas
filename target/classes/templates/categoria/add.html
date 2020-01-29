@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<title th:text="${titulo}"></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1 th:text="${titulo}"></h1>
+	<a href="#" th:href="@{{volverUri} (volverUri=${volverUri})}"> Volver </a>
+	<form action="#" th:action="@{{formUri} (formUri=${formUri})}"
+		th:object="${categoria}" method="post">
+		<p>
+			Nombre: <input type="text" th:field="*{nombre}" />
+		</p>
+		<p>
+			<input type="submit" value="Guardar" /> <input type="reset"
+				value="Limpiar" />
+		</p>
+	</form>
+</body>
+</html>
